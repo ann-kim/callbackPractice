@@ -172,9 +172,10 @@ var users = [
 
 var getUserById = function(arry, iden, cb) {
   for (var i = 0; i < arry.length; i++) {
-    for (var key in [i]) {
-      if (key[i] === iden) {
+    for (var key in arry[i]) {
+      if (arry[i][key] === iden) {
         cb(arry[i]);
+        break;
       } 
     }
   }
