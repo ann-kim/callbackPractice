@@ -101,12 +101,22 @@ contains(names, 'Colt', function(result){
 
 /* NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM */
 
-
-
-
     //Code Here for uniq
 
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
+
+var uniq = function(arry, noDoubles) {
+  var newArry = [];
+  for (var i = 0; i < arry.length; i++) {
+    for (var j = i + 1; j < arry.length; j++) {
+      if (arry[i] === arry[j]) {
+        arry.splice(i, 1);
+      }
+    }
+  }
+  noDoubles(arry);
+}
+
 uniq(names, function(uniqArr){
   console.log('The new names array with all the duplicate items removed is ', uniqArr);
 });
@@ -117,12 +127,16 @@ uniq(names, function(uniqArr){
 
 /* NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM */
 
-
-
-
     //Code Here for each
 
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
+
+var each = function(arry, cb) {
+  for (var i = 0; i < arry.length; i++) {
+    cb(arry[i], i);
+  }
+}
+
 each(names, function(item, indice){
   console.log('The item in the ' + indice + ' position is ' + item)
 });
@@ -132,10 +146,6 @@ each(names, function(item, indice){
 
 
 /* NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM */
-
-
-
-
 
  //code here for getUserById
 
@@ -160,6 +170,19 @@ var users = [
   },
 ];
 
+var getUserById = function(arry, iden, cb) {
+  for (var i = 0; i < arry.length; i++) {
+    for (var key in [i]) {
+      if (key[i] === iden) {
+        cb(arry[i]);
+      } 
+    }
+  }
+}
+
 getUserById(users, '16t', function(user){
   console.log('The user with the id 16t has the email of ' + user.email + ' the name of ' + user.name + ' and the address of ' + user.address); 
 });
+
+
+
